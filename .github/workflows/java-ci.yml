@@ -36,7 +36,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup JDK 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '21'
@@ -46,10 +46,6 @@ jobs:
         run: chmod +x mvnw
 
       - name: Build and test
-        env:
-          SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/studentdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-          SPRING_DATASOURCE_USERNAME: root
-          SPRING_DATASOURCE_PASSWORD: 1234
         run: ./mvnw clean verify
 
       - name: Generate JaCoCo report
